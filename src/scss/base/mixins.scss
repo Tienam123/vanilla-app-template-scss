@@ -88,7 +88,10 @@
 		}
 		// Якщо не підтримується clamp();
 		@supports not (#{$property}: $propertyValue) {
-			#{$property}: calc(#{rem($minSize)} + #{$addSize} * (100vw - #{rem($widthTo)}) / #{math.div($widthFrom, 16) - math.div($widthTo, 16)});
+			#{$property}: calc(
+				#{rem($minSize)} + #{$addSize} * (100vw - #{rem($widthTo)}) / #{math.div($widthFrom, 16) -
+					math.div($widthTo, 16)}
+			);
 		}
 	}
 	@if $keepSize != 1 and $keepSize != 2 {
@@ -98,143 +101,185 @@
 	}
 }
 
-
 // MIN-WIDTH
 
 @mixin min-320 {
-   @media screen and (min-width: map-get($breakpoints, mb320)) {
-      @content;
-   }
+	@media screen and (min-width: map-get($breakpoints, mb320)) {
+		@content;
+	}
 }
 
 @mixin min-480 {
-   @media screen and (min-width: map-get($breakpoints, mb480)) {
-      @content;
-   }
+	@media screen and (min-width: map-get($breakpoints, mb480)) {
+		@content;
+	}
 }
 
 @mixin min-768 {
-   @media screen and (min-width: map-get($breakpoints, tb768)) {
-      @content;
-   }
+	@media screen and (min-width: map-get($breakpoints, tb768)) {
+		@content;
+	}
 }
 @mixin min-991 {
-   @media screen and (min-width: map-get($breakpoints, tb991)) {
-      @content;
-   }
+	@media screen and (min-width: map-get($breakpoints, tb991)) {
+		@content;
+	}
 }
 
 @mixin min-1200 {
-   @media screen and (min-width: map-get($breakpoints, dsk1200)) {
-      @content;
-   }
+	@media screen and (min-width: map-get($breakpoints, dsk1200)) {
+		@content;
+	}
 }
 
 //MIN-WIDTH AND MAX-WIDTH
 @mixin min320-max479 {
-   @media screen and (min-width: map-get($breakpoints, mb320)) and (max-width: map-get($breakpoints, mb479)) {
-      @content;
-   }
+	@media screen and (min-width: map-get($breakpoints, mb320)) and (max-width: map-get($breakpoints, mb479)) {
+		@content;
+	}
 }
 @mixin min480-max767 {
-   @media screen and (min-width: map-get($breakpoints, mb480)) and (max-width: map-get($breakpoints, mb767)) {
-      @content;
-   }
+	@media screen and (min-width: map-get($breakpoints, mb480)) and (max-width: map-get($breakpoints, mb767)) {
+		@content;
+	}
 }
 @mixin min320-max767 {
-   @media screen and (min-width: map-get($breakpoints, mb320)) and (max-width: map-get($breakpoints, mb767)) {
-      @content;
-   }
+	@media screen and (min-width: map-get($breakpoints, mb320)) and (max-width: map-get($breakpoints, mb767)) {
+		@content;
+	}
 }
 @mixin min768-max991 {
-   @media screen and (min-width: map-get($breakpoints, tb768)) and (max-width: map-get($breakpoints, tb991)) {
-      @content;
-   }
+	@media screen and (min-width: map-get($breakpoints, tb768)) and (max-width: map-get($breakpoints, tb991)) {
+		@content;
+	}
 }
 @mixin min768-max1199 {
-   @media screen and (min-width: map-get($breakpoints, tb768)) and (max-width: map-get($breakpoints, tb1199)) {
-      @content;
-   }
+	@media screen and (min-width: map-get($breakpoints, tb768)) and (max-width: map-get($breakpoints, tb1199)) {
+		@content;
+	}
 }
 @mixin min992-max1199 {
-   @media screen and (min-width: map-get($breakpoints, tb992)) and (max-width: map-get($breakpoints, tb1199)) {
-      @content;
-   }
+	@media screen and (min-width: map-get($breakpoints, tb992)) and (max-width: map-get($breakpoints, tb1199)) {
+		@content;
+	}
 }
-
 
 //Max-width
 
 @mixin max-479 {
-   @media screen and (max-width: map-get($breakpoints, mb479)) {
-      @content;
-   }
+	@media screen and (max-width: map-get($breakpoints, mb479)) {
+		@content;
+	}
 }
 
 @mixin max-767 {
-   @media screen and (max-width: map-get($breakpoints, mb767)) {
-      @content;
-   }
+	@media screen and (max-width: map-get($breakpoints, mb767)) {
+		@content;
+	}
 }
 
 @mixin max-991 {
-   @media screen and (max-width: map-get($breakpoints, tb991)) {
-      @content;
-   }
+	@media screen and (max-width: map-get($breakpoints, tb991)) {
+		@content;
+	}
 }
 
 @mixin max-1199 {
-   @media screen and (max-width: map-get($breakpoints, tb1199)) {
-      @content;
-   }
+	@media screen and (max-width: map-get($breakpoints, tb1199)) {
+		@content;
+	}
 }
 
 //========================/ Min media (Retina) /====================================
 
 @mixin min320-retina {
-   @media screen and  (-webkit-min-device-pixel-ratio: 2) and (min-width: map-get($breakpoints, mb320)),screen and (min-resolution:192dpi) and (min-width: map-get($breakpoints, mb320)),
-screen and (min-resolution: 2dppx) and (min-width: map-get($breakpoints, mb320))   {
-	@content;
-}
+	@media screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: map-get($breakpoints, mb320)),
+		screen and (min-resolution: 192dpi) and (min-width: map-get($breakpoints, mb320)),
+		screen and (min-resolution: 2dppx) and (min-width: map-get($breakpoints, mb320)) {
+		@content;
+	}
 }
 @mixin min480-retina {
-   @media screen and  (-webkit-min-device-pixel-ratio: 2) and (min-width: map-get($breakpoints, mb480)),screen and (min-resolution:192dpi) and (min-width: map-get($breakpoints, mb480)),
-screen and (min-resolution: 2dppx) and (min-width: map-get($breakpoints, mb480))   {
-	@content;
-}
+	@media screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: map-get($breakpoints, mb480)),
+		screen and (min-resolution: 192dpi) and (min-width: map-get($breakpoints, mb480)),
+		screen and (min-resolution: 2dppx) and (min-width: map-get($breakpoints, mb480)) {
+		@content;
+	}
 }
 @mixin min768-retina {
-   @media screen and  (-webkit-min-device-pixel-ratio: 2) and (min-width: map-get($breakpoints, tb768)),screen and (min-resolution:192dpi) and (min-width: map-get($breakpoints, tb768)),
-screen and (min-resolution: 2dppx) and (min-width: map-get($breakpoints, tb768))   {
-	@content;
-}
+	@media screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: map-get($breakpoints, tb768)),
+		screen and (min-resolution: 192dpi) and (min-width: map-get($breakpoints, tb768)),
+		screen and (min-resolution: 2dppx) and (min-width: map-get($breakpoints, tb768)) {
+		@content;
+	}
 }
 @mixin min1200-retina {
-   @media screen and  (-webkit-min-device-pixel-ratio: 2) and (min-width: map-get($breakpoints, dsk1200)),screen and (min-resolution:192dpi) and (min-width: map-get($breakpoints, dsk1200)),
-screen and (min-resolution: 2dppx) and (min-width: map-get($breakpoints, dsk1200))   {
-	@content;
-}
+	@media screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: map-get($breakpoints, dsk1200)),
+		screen and (min-resolution: 192dpi) and (min-width: map-get($breakpoints, dsk1200)),
+		screen and (min-resolution: 2dppx) and (min-width: map-get($breakpoints, dsk1200)) {
+		@content;
+	}
 }
 
 //========================/ max media (Retina) /====================================
 
-
 @mixin max479-retina {
-   @media screen and  (-webkit-min-device-pixel-ratio: 2) and (max-width: map-get($breakpoints, mb479)),screen and (min-resolution:192dpi) and (max-width: map-get($breakpoints, mb479)),
-screen and (min-resolution: 2dppx) and (max-width: map-get($breakpoints, mb479))   {
-	@content;
-}
+	@media screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: map-get($breakpoints, mb479)),
+		screen and (min-resolution: 192dpi) and (max-width: map-get($breakpoints, mb479)),
+		screen and (min-resolution: 2dppx) and (max-width: map-get($breakpoints, mb479)) {
+		@content;
+	}
 }
 @mixin max767-retina {
-   @media screen and  (-webkit-min-device-pixel-ratio: 2) and (max-width: map-get($breakpoints, mb767)),screen and (min-resolution:192dpi) and (max-width: map-get($breakpoints, mb767)),
-screen and (min-resolution: 2dppx) and (max-width: map-get($breakpoints, mb767))   {
-	@content;
-}
+	@media screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: map-get($breakpoints, mb767)),
+		screen and (min-resolution: 192dpi) and (max-width: map-get($breakpoints, mb767)),
+		screen and (min-resolution: 2dppx) and (max-width: map-get($breakpoints, mb767)) {
+		@content;
+	}
 }
 @mixin max1199-retina {
-   @media screen and  (-webkit-min-device-pixel-ratio: 2) and (max-width: map-get($breakpoints, tb1199)),screen and (min-resolution:192dpi) and (max-width: map-get($breakpoints, tb1199)),
-screen and (min-resolution: 2dppx) and (max-width: map-get($breakpoints, tb1199))   {
-	@content;
-}
+	@media screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: map-get($breakpoints, tb1199)),
+		screen and (min-resolution: 192dpi) and (max-width: map-get($breakpoints, tb1199)),
+		screen and (min-resolution: 2dppx) and (max-width: map-get($breakpoints, tb1199)) {
+		@content;
+	}
 }
 
+@mixin min320-max479-retina {
+	@media screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: map-get($breakpoints, mb320)) and (max-width: map-get($breakpoints, mb479)),
+		screen and (min-resolution: 192dpi) and (min-width: map-get($breakpoints, mb320)) and (max-width: map-get($breakpoints, mb479)),
+		screen and (min-resolution: 2dppx) and (min-width: map-get($breakpoints, mb320)) and (max-width: map-get($breakpoints, mb479)) {
+		@content;
+	}
+}
+
+@mixin min480-max767-retina {
+	@media screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: map-get($breakpoints, mb480)) and (max-width: map-get($breakpoints, mb767)),
+		screen and (min-resolution: 192dpi) and (min-width: map-get($breakpoints, mb480)) and (max-width: map-get($breakpoints, mb767)),
+		screen and (min-resolution: 2dppx) and (min-width: map-get($breakpoints, mb480)) and (max-width: map-get($breakpoints, mb767)) {
+		@content;
+	}
+}
+@mixin min768-max1199-retina {
+	@media screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: map-get($breakpoints, tb768)) and (max-width: map-get($breakpoints, tb1199)),
+		screen and (min-resolution: 192dpi) and (min-width: map-get($breakpoints, tb768)) and (max-width: map-get($breakpoints, tb1199)),
+		screen and (min-resolution: 2dppx) and (min-width: map-get($breakpoints, tb768)) and (max-width: map-get($breakpoints, tb1199)) {
+		@content;
+	}
+}
+
+@mixin min768-max991-retina {
+	@media screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: map-get($breakpoints, tb768)) and (max-width: map-get($breakpoints, tb991)),
+		screen and (min-resolution: 192dpi) and (min-width: map-get($breakpoints, tb768)) and (max-width: map-get($breakpoints, tb991)),
+		screen and (min-resolution: 2dppx) and (min-width: map-get($breakpoints, tb768)) and (max-width: map-get($breakpoints, tb991)) {
+		@content;
+	}
+}
+
+@mixin min768-max991-retina {
+	@media screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: map-get($breakpoints, tb992)) and (max-width: map-get($breakpoints, dsk1200)),
+		screen and (min-resolution: 192dpi) and (min-width: map-get($breakpoints, tb992)) and (max-width: map-get($breakpoints, dsk1200)),
+		screen and (min-resolution: 2dppx) and (min-width: map-get($breakpoints, tb992)) and (max-width: map-get($breakpoints, dsk1200)) {
+		@content;
+	}
+}
